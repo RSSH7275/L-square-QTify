@@ -1,9 +1,10 @@
 import React from 'react';
-import {ReactComponent as QLogo} from "../assets/QtifyLogo.svg";
+import  QLogo from "../assets/QtifyLogo.svg";
+import styles from "./Logo.module.css";
   
 const Logo = () => {
   return (
-    <div><QLogo/></div>
+   <div className={styles.logoDiv}><img src={QLogo}   alt='logo' width={67}/></div>
   )
 }
 

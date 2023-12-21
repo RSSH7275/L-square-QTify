@@ -1,0 +1,11 @@
+.buttonStyler {
+  padding: 1rem;
+  border-radius: 1rem;
+  font-family:"Poppins";
+  width: 10%;
+  font-weight: 550;
+  color: var(--color-primary);
+  background: var(--color-black);
+  cursor: pointer;
+  font-size: 14px;
+}

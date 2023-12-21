@@ -1,0 +1,10 @@
+.inpBox{
+    padding: 0.8rem;
+    width: 100%;
+    border-radius: 0.5rem 0rem 0rem 0.5rem;
+}
+
+.formBox{
+    display: flex;
+    width: 36%;
+}

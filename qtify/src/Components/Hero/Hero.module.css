@@ -1,3 +1,24 @@
 .heroBox{
-    
+    display: flex;
+    background-color: var(--color-black);
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    gap: 1.5rem;
 }
+
+.textBox{
+    display: flex;
+    flex-direction: column;
+  
+}
+
+.textStyle{
+    font-family:"Poppins";
+    font-weight:600;
+    font-size:32px;
+    line-height:48px;
+    align-items:Center;
+}
+

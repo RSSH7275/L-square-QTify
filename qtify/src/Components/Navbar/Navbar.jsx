@@ -6,12 +6,12 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   return (
-    <nav className={styles.navWrapper}>
+    <nav className={styles.navbar}>
       <a href="/">
         <Logo />
       </a>
       <Search placeholder="search a Album of Your Choice"/>
-      <Button />
+      <Button children="Give Feedback"/>
     </nav>
   );
 };

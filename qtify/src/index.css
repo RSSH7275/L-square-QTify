@@ -16,10 +16,10 @@ html,body{
   height: 100%;
 }
 
-/* img,svg{
+img,svg{
   display: block;
   max-width: 100%;
-} */
+}
 
 body{
 font-family:'Poppins',sans-serif; 
@@ -27,4 +27,12 @@ line-height: 1.5;
 background-color: var(--color-black);
 color: var(--color-white);
 /* overflow-x: hidden; */
+}
+
+a,
+a:active,
+a:hover,
+a:focus{
+  text-decoration: none;
+  color: inherit;
 }

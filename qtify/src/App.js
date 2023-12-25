@@ -1,14 +1,40 @@
 import Navbar from "./Components/Navbar/Navbar";
 import HeroSection from "./Components/Hero/Hero";
+import {StyledEngineProvider} from '@mui/material';
+import {fetchTopAlbum,fetchNewSongs,fetchSongs} from "./Components/api/api";
+import {Outlet} from 'react-router-dom';
 import './App.css';
-
+import { useEffect, useState } from "react";
 
 function App() {
+  
+  const [data,setData]=useState({});
+
+  const dataGenerate=(key,source)=>{
+    source().then((data)=>{
+      setData((prevData)=>{
+        return {...prevData,[key]:data};
+      })
+    })
+  }
+
+  useEffect(()=>{
+    dataGenerate("topAlbums",fetchTopAlbum);
+    dataGenerate("newAlbums",fetchNewSongs);
+    dataGenerate("songs",fetchSongs);
+
+  },[]);
+
+  const {topAlbums=[],newAlbums=[],songs=[]}=data;
+
   return (
     <div className="App">
+    <StyledEngineProvider injectFirst>
       <Navbar/>    
-      <HeroSection/>  
+      <Outlet context={{data:{topAlbums,newAlbums,songs}}}/>  
+    </StyledEngineProvider>
     </div>
+    
   );
 }
 

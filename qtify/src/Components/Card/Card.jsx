@@ -9,23 +9,23 @@ const Card = ({ data, type }) => {
     switch (type) {
       case "album": {
         const { image, title, follows, songs, slug } = data;
-        
+
         return (
           <Tooltip title={`${songs?.length} songs`} placement="top" arrow>
-           <Link to={`/album/${slug}`}>
-            <div className={styles.wrapper}>
-              <div className={styles.card}>
-                <img src={image} alt="song" loading="lazy" />
-                <div className={styles.banner}>
-                  <div className={styles.pill}>
-                    <p>{follows} follows</p>
+            <Link to={`/album/${slug}`}>
+              <div className={styles.wrapper}>
+                <div className={styles.card}>
+                  <img src={image} alt="song" loading="lazy" />
+                  <div className={styles.banner}>
+                    <div className={styles.pill}>
+                      <p>{follows} follows</p>
+                    </div>
                   </div>
                 </div>
+                <div className={styles.titleWrapper}>
+                  <p>{title}</p>
+                </div>
               </div>
-              <div className={styles.titleWrapper}>
-                <p>{title}</p>
-              </div>
-            </div>
             </Link>
           </Tooltip>
         );
@@ -36,47 +36,43 @@ const Card = ({ data, type }) => {
         const { image, title, follows, songs, slug } = data;
         return (
           <Tooltip title={`${songs?.length} songs`} placement="top" arrow>
-          <Link to={`/album/${slug}`}>
-            <div className={styles.wrapper}>
-              <div className={styles.card}>
-                <img src={image} alt="song" loading="lazy" />
-                <div className={styles.banner}>
-                  <div className={styles.pill}>
-                    <p>{follows} follows</p>
+            <Link to={`/album/${slug}`}>
+              <div className={styles.wrapper}>
+                <div className={styles.card}>
+                  <img src={image} alt="song" loading="lazy" />
+                  <div className={styles.banner}>
+                    <div className={styles.pill}>
+                      <p>{follows} follows</p>
+                    </div>
                   </div>
                 </div>
+                <div className={styles.titleWrapper}>
+                  <p>{title}</p>
+                </div>
               </div>
-              <div className={styles.titleWrapper}>
-                <p>{title}</p>
-              </div>
-            </div>
             </Link>
           </Tooltip>
         );
       }
 
       case "songs": {
-        const { image, likes, title, songs, slug } = data;
-        // console.log("Datas",datas);
+        const { image, likes, title } = data;
+        // console.log("Datas",data);
         // console.log("Songs",title);
         return (
-          <Tooltip title={`${songs?.length} songs`} placement="top" arrow>
-          <Link to={`/album/${slug}`}>
-            <div className={styles.wrapper}>
-              <div className={styles.card}>
-                <img src={image} alt="song" loading="lazy" />
-                <div className={styles.banner}>
-                  <div className={styles.pill}>
-                    <p>{likes} Likes</p>
-                  </div>
+          <div className={styles.wrapper}>
+            <div className={styles.card}>
+              <img src={image} alt="song" loading="lazy" />
+              <div className={styles.banner}>
+                <div className={styles.pill}>
+                  <p>{likes} Likes</p>
                 </div>
               </div>
-              <div className={styles.titleWrapper}>
-                <p>{title}</p>
-              </div>
             </div>
-            </Link>
-          </Tooltip>
+            <div className={styles.titleWrapper}>
+              <p>{title}</p>
+            </div>
+          </div>
         );
       }
 

@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CircularProgress } from "@mui/material";
 import Card from "../Card/Card";
 import Carousel from "../Carousel/Carousel";
+import BasicTabs from "../SongTab/SongTab";
 import styles from "./Section.module.css";
 
 export default function Section({ title, data, type }) {
   const [carrouselToggle, setCarrouselToggel] = useState(true);
+  const [tabChange, setTabChange] = useState([]);
 
+  useEffect(() => {
+    if (title == "Songs") {
+      setTabChange(data);
+    }
+  }, [data, title]);
+  // console.log('what sis data??',tabChange);
   const handleCarouselToggel = () => {
     setCarrouselToggel((prevState) => !prevState);
   };
@@ -14,10 +22,18 @@ export default function Section({ title, data, type }) {
   return (
     <>
       <div className={styles.mainHeader}>
-        <h3>{title}</h3>
-        <h4 className={styles.toggleText} onClick={handleCarouselToggel}>
-          {!carrouselToggle ? "Collapse" : "Show All"}
-        </h4>
+        {title == "Songs" ? (
+          <>
+            <h3>{title}</h3>
+          </>
+        ) : (
+          <>
+            <h3>{title}</h3>
+            <h4 className={styles.toggleText} onClick={handleCarouselToggel}>
+              {!carrouselToggle ? "Collapse" : "Show All"}
+            </h4>
+          </>
+        )}
       </div>
       {data.length === 0 ? (
         <CircularProgress />
@@ -30,10 +46,29 @@ export default function Section({ title, data, type }) {
               ))}
             </div>
           ) : (
-            <Carousel
-              data={data}
-              renderComponent={(data) => <Card data={data} type={type} />}
-            />
+            <>
+              {title == "Songs" ? (
+                <>
+                  <BasicTabs songs={data} setTab={setTabChange} />
+
+                  {tabChange.length !== 0 ? (
+                    <Carousel
+                      data={tabChange}
+                      renderComponent={(data) => (
+                        <Card data={data} type={type} />
+                      )}
+                    />
+                  ) : (
+                    <CircularProgress />
+                  )}
+                </>
+              ) : (
+                <Carousel
+                  data={data}
+                  renderComponent={(data) => <Card data={data} type={type} />}
+                />
+              )}
+            </>
           )}
         </div>
       )}
